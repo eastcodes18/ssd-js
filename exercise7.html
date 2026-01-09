@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7</title>
+</head>
+
+<body>
+    <main>
+
+    </main>
+
+    <script>
+        function greet(name) {
+            if (!name) {
+                console.log('Hello there!');
+            } else {
+                console.log(`Hello ${name}!`);
+            }
+        }
+
+        greet('East');
+        greet('Mahi');
+        greet('John');
+        greet('Sarah');
+        greet();
+
+        //Function to calculate fahrenheit
+        function convertToFahrenheit(celsius){
+            console.log(`${(celsius * 9/5) + 32}F`);
+        }
+
+        convertToFahrenheit(25);
+        convertToFahrenheit(20);
+
+        //function to calculate celsius
+        function convertToCelsius(fahrenheit){
+            console.log(`${(fahrenheit - 32) * 5/9}C`);
+        }
+
+        convertToCelsius(77);
+        convertToCelsius(86);
+
+        //function to calculate temparature as per units mentioned.
+        function convertTemparature(degrees, unit){
+            if(unit === 'c'){
+                convertToFahrenheit(degrees);
+            }else if(unit === 'f'){
+                convertToCelsius(degrees);
+            }
+        }
+
+        convertTemparature(25, 'c');
+        convertTemparature(68, 'f');
+
+        //function to convert miles into km.
+        function calculateKmFromMiles(miles){
+            console.log(`${miles * 1.6}km`);
+        }
+
+        function calculateKmFromFts(fts){
+            console.log(`${fts / 3281}km`);
+        }
+        function calculateMilesFromKm(km){
+            console.log(`${km / 1.6}miles`);
+        }
+
+        function calculateMilesFromFts(fts){
+            console.log(`${fts / 5280}miles`);
+        }
+
+        function calculateFtsFromMiles(miles){
+            console.log(`${miles * 5280}fts`);
+        }
+
+        function calculateFtsFromKm(km){
+            console.log(`${km * 3281}fts`);
+        }
+
+        //function to calculate length in km and miles
+        function convertLength(length, from , to){
+
+            let isInvalidUnit = 0;
+
+            if(from !== 'miles' && from !== 'km' && from !== 'fts'){
+                console.log(`Invalid unit: ${from}`);
+                isInvalidUnit = 1;
+            }else if(to !== 'miles' && to !== 'km' && to !== 'fts'){
+                console.log(`Invalid unit: ${to}`);
+                isInvalidUnit = 1;
+            }else{
+                isInvalidUnit = 0;
+            }
+
+            if(isInvalidUnit === 0){
+                if(from === 'miles' && to === 'km'){
+                    calculateKmFromMiles(length);
+                }else if(from === 'miles' && to === 'fts'){
+                    calculateFtsFromMiles(length);
+                }else if(from === 'km' && to === 'miles'){
+                    calculateMilesFromKm(length);
+                }else if(from === 'km' && to === 'fts'){
+                    calculateFtsFromKm(length);
+                }else if(from === 'fts' && to === 'km'){
+                    calculateKmFromFts(length);
+                }else if(from === 'fts' && to === 'miles'){
+                    calculateMilesFromFts(length);
+                }else if(from === to){
+                    console.log(`${length}${to}`);
+                }
+            }else{
+                return;
+            }
+        }
+
+        convertLength(30, 'miles', 'km');
+        convertLength(48, 'km', 'miles');
+        convertLength(40, 'miles', 'miles');
+        convertLength(1, 'miles', 'fts');
+        convertLength(20, 'km', 'fts');
+        convertLength(6000, 'fts', 'miles');
+        convertLength(4000, 'fts', 'km')
+        convertLength(50, 'km', 'km');
+        convertLength(20, 'fts', 'fts');
+        convertLength(30, 'cm', 'cm');
+    </script>
+</body>
+
+</html>
